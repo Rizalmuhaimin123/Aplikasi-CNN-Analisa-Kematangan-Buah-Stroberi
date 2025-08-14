@@ -1,0 +1,20 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme -->
+    <style name="Theme.klasifikasigambar" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Warna utama: hijau tosca -->
+        <item name="colorPrimary">@color/teal_700</item>
+        <item name="colorPrimaryVariant">@color/teal_900</item>
+        <item name="colorOnPrimary">@color/white</item>
+
+        <!-- Warna sekunder -->
+        <item name="colorSecondary">@color/teal_200</item>
+        <item name="colorSecondaryVariant">@color/teal_700</item>
+        <item name="colorOnSecondary">@color/white</item>
+
+        <!-- Warna background -->
+        <item name="android:windowBackground">@android:color/white</item>
+        <item name="android:statusBarColor">@color/teal_900</item>
+        <item name="android:navigationBarColor">@color/teal_700</item>
+        <item name="android:textColorPrimary">@android:color/black</item>
+    </style>
+</resources>

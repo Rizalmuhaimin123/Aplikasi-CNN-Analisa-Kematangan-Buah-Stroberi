@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_home">
+
+    <!-- Beranda / Home -->
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="id.rizal.klasifikasigambar.ui.home.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home" />
+
+    <!-- Riwayat -->
+    <fragment
+        android:id="@+id/navigation_history"
+        android:name="id.rizal.klasifikasigambar.ui.history.HistoryFragment"
+        android:label="@string/title_history"
+        tools:layout="@layout/fragment_history" />
+
+    <!-- Sampel -->
+    <fragment
+        android:id="@+id/navigation_profile"
+        android:name="id.rizal.klasifikasigambar.ui.profile.SampleFragment"
+        android:label="@string/title_profilee"
+        tools:layout="@layout/fragment_sample" />
+    <!-- Jelajah -->
+    <fragment
+        android:id="@+id/navigation_jelajah"
+        android:name="id.rizal.klasifikasigambar.ui.jelajah.JelajahFragment"
+        android:label="Jelajah"
+        tools:layout="@layout/fragment_jelajah" />
+
+</navigation>
