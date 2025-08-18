@@ -5,91 +5,219 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
-    tools:context=".ui.home.HomeFragment"
-    android:background="#FFFFFF">
+    android:background="@color/background_primary"
+    android:padding="24dp"
+    tools:context=".ui.home.HomeFragment">
 
-    <!-- Gambar Preview -->
+    <!-- Header Section -->
 
-    <!-- Tombol Pilih Gambar -->
+    <!-- Image Preview Card -->
 
-    <!-- Tombol Proses -->
-    <ImageView
-        android:id="@+id/imagePreview"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="36dp"
-        android:contentDescription="Preview Gambar"
-        android:scaleType="centerCrop"
-        android:src="@drawable/album"
-        app:layout_constraintDimensionRatio="1:1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent="0.4"
-        app:layout_constraintHorizontal_bias="0.494"
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="Analisis Gambar"
+        android:textColor="@color/text_primary"
+        android:textSize="28sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/btnPilihGambar"
+    <TextView
+        android:id="@+id/tvSubtitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
-        android:backgroundTint="#00796B"
-        android:text="Pilih Gambar"
-        android:textAllCaps="false"
-        android:textColor="#FFFFFF"
-        app:layout_constraintEnd_toStartOf="@id/btnProses"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imagePreview" />
-
-    <!-- Informasi Tambahan -->
-
-    <!-- Hasil Klasifikasi (Dipindah ke bawah layar) -->
-
-    <Button
-        android:id="@+id/btnProses"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="44dp"
-        android:backgroundTint="#00796B"
-        android:text="Proses"
-        android:textAllCaps="false"
-        android:textColor="#FFFFFF"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="8dp"
+        android:text="Pilih gambar untuk memulai analisis"
+        android:textColor="@color/text_secondary"
         android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/btnPilihGambar"
-        app:layout_constraintTop_toBottomOf="@id/imagePreview" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle" />
 
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardImagePreview"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="32dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="1dp"
+        app:cardBackgroundColor="@color/surface_primary"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.35"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvSubtitle">
+
+        <ImageView
+            android:id="@+id/imagePreview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="Preview Gambar"
+            android:scaleType="centerCrop"
+            android:src="@drawable/album"
+            android:background="@drawable/image_placeholder_bg" />
+
+        <!-- Overlay untuk gambar kosong -->
+        <LinearLayout
+            android:id="@+id/layoutImagePlaceholder"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="@color/surface_secondary"
+            android:visibility="gone">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="Belum ada gambar"
+                android:textColor="@color/text_secondary"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <!-- Action Buttons Section -->
+    <LinearLayout
+        android:id="@+id/layoutButtons"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cardImagePreview">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnPilihGambar"
+            style="@style/Widget.Material3.Button.UnelevatedButton"
+            android:layout_width="0dp"
+            android:layout_height="56dp"
+            android:layout_weight="1"
+            android:layout_marginEnd="8dp"
+            android:backgroundTint="@color/accent_primary"
+            android:text="Pilih Gambar"
+            android:textAllCaps="false"
+            android:textColor="@color/on_accent"
+            android:textSize="14sp"
+            android:fontFamily="sans-serif-medium"
+            app:cornerRadius="12dp"
+            app:icon="@drawable/ic_image"
+            app:iconGravity="textStart"
+            app:iconPadding="8dp"
+            app:iconSize="20dp"
+            app:rippleColor="@color/ripple_accent" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnProses"
+            style="@style/Widget.Material3.Button"
+            android:layout_width="0dp"
+            android:layout_height="56dp"
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:backgroundTint="@color/primary"
+            android:text="Proses"
+            android:textAllCaps="false"
+            android:textColor="@color/on_primary"
+            android:textSize="14sp"
+            android:fontFamily="sans-serif-medium"
+            app:cornerRadius="12dp"
+            app:icon="@drawable/ic_analytics"
+            app:iconGravity="textStart"
+            app:iconPadding="8dp"
+            app:iconSize="20dp"
+            app:rippleColor="@color/ripple_primary" />
+
+    </LinearLayout>
+
+    <!-- Process Info -->
     <TextView
         android:id="@+id/tvProsesInfo"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="24dp"
         android:gravity="center"
         android:text="Proses untuk memulai analisa"
-        android:textColor="#B0B0B0"
+        android:textColor="@color/text_secondary"
         android:textSize="14sp"
+        android:alpha="0.8"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnProses" />
+        app:layout_constraintTop_toBottomOf="@id/layoutButtons" />
 
-    <TextView
-        android:id="@+id/tvKeterangan"
-        android:layout_width="wrap_content"
+    <!-- Result Card -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardResult"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="72dp"
-        android:background="#FFFFFF"
-        android:gravity="center"
-        android:padding="12dp"
-        android:text="Hasil klasifikasi akan tampil di sini"
-        android:textColor="#000000"
-        android:textSize="16sp"
+        android:layout_marginBottom="32dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="1dp"
+        app:cardBackgroundColor="@color/surface_primary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="30dp">
+
+            <TextView
+                android:id="@+id/tvHasilKlasifikasi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hasil Klasifikasi"
+                android:textColor="@color/text_primary"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:fontFamily="sans-serif-medium"
+                app:drawableEndCompat="@drawable/stroberi"
+                android:drawablePadding="8dp"
+                android:gravity="center_vertical" />
+
+            <View
+                android:layout_width="40dp"
+                android:layout_height="3dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="16dp"
+                android:background="@color/accent_primary" />
+
+            <TextView
+                android:id="@+id/tvKeterangan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Hasil klasifikasi akan tampil di sini"
+                android:textColor="@color/text_secondary"
+                android:textSize="16sp"
+                android:lineSpacingExtra="4dp"
+                android:alpha="0.8" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <!-- Loading Progress (Hidden by default) -->
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        android:id="@+id/progressLoading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:indicatorColor="@color/accent_primary"
+        app:trackColor="@color/surface_secondary"
+        app:layout_constraintBottom_toBottomOf="@id/cardImagePreview"
+        app:layout_constraintEnd_toEndOf="@id/cardImagePreview"
+        app:layout_constraintStart_toStartOf="@id/cardImagePreview"
+        app:layout_constraintTop_toTopOf="@id/cardImagePreview" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
